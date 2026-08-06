@@ -32,7 +32,7 @@ def load_data(max_retries: int = 3, retry_delay: float = 2.0) -> pd.DataFrame:
     for attempt in range(1, max_retries + 1):
         try:
             print(f"[data_ingestion] Attempt {attempt}/{max_retries}: fetching from OpenML ...")
-            bunch = fetch_openml(data_id=506, as_frame=True, parser="auto")
+            bunch = fetch_openml(data_id=531, as_frame=True, parser="auto")
             df = bunch.frame  # includes all feature columns + 'MEDV' as target
 
             # Rename the target column to 'target' for consistency

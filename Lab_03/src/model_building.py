@@ -34,9 +34,13 @@ from sklearn.ensemble import RandomForestRegressor  # pyrefly: ignore [missing-i
 
 
 # ---------------------------------------------------------------------------
-# MLflow configuration
+# MLflow + DagsHub configuration
 # ---------------------------------------------------------------------------
-MLFLOW_TRACKING_URI = "sqlite:///mlflow.db"
+os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/kamalikamuruganandham/DEVOPS_COURSE.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"] = "kamalikamuruganandham"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "bdfcb46c073aca94a1baaad365db30074bf11364"  # TODO: replace with your DagsHub token
+
+MLFLOW_TRACKING_URI = os.environ["MLFLOW_TRACKING_URI"]
 MLFLOW_EXPERIMENT_NAME = "Boston_Housing_Regression"
 
 

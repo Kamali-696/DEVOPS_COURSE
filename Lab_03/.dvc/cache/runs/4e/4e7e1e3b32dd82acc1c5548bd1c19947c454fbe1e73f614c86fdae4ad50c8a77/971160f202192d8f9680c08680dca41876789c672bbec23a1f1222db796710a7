@@ -1,0 +1,33 @@
+cmd: python src/model_building.py
+deps:
+- path: data/features
+  hash: md5
+  md5: 4963e8a02087a53fd383b6500fa32f22.dir
+  size: 133885
+  nfiles: 3
+- path: params.yaml
+  hash: md5
+  md5: f6c73728f78eadfda75cde3c315a411e
+  size: 253
+- path: src/model_building.py
+  hash: md5
+  md5: 644d99b8e1e72bcbab9793bda0546358
+  size: 5369
+params:
+  params.yaml:
+    model_building:
+      linear_regression:
+        fit_intercept: true
+      decision_tree:
+        max_depth: 10
+        random_state: 42
+      random_forest:
+        n_estimators: 100
+        max_depth: 15
+        random_state: 42
+outs:
+- path: models
+  hash: md5
+  md5: 48b6abda42843440b54a415da5c8bbb4.dir
+  size: 3396291
+  nfiles: 3
