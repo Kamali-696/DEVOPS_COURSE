@@ -1,0 +1,6 @@
+feature_engineering:
+  test_size: 0.2
+  random_state: 42
+
+model_building:
+  fit_intercept: true
