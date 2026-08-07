@@ -1,0 +1,12 @@
+cmd: python src/data_ingestion.py
+deps:
+- path: src/data_ingestion.py
+  hash: md5
+  md5: 3a7df4ca7ec799e0b77a64723c773ffc
+  size: 3677
+outs:
+- path: data/raw
+  hash: md5
+  md5: 3bf247fbc2b39ee62387c81bab229b89.dir
+  size: 4641
+  nfiles: 1

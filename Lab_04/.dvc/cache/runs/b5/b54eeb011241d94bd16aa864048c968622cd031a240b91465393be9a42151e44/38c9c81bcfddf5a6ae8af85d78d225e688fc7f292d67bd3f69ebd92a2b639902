@@ -1,0 +1,20 @@
+cmd: python src/model_evaluation.py
+deps:
+- path: data/features/test.csv
+  hash: md5
+  md5: b066dd6091ec5626cbc0f516f0678014
+  size: 26769
+- path: models
+  hash: md5
+  md5: 48b6abda42843440b54a415da5c8bbb4.dir
+  size: 3396291
+  nfiles: 3
+- path: src/model_evaluation.py
+  hash: md5
+  md5: c6814b0c2882fa876967712640e2845d
+  size: 6199
+outs:
+- path: metrics.json
+  hash: md5
+  md5: 3e4cdf3225851a1dd0c374961f3a3845
+  size: 887

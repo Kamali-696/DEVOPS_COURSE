@@ -1,0 +1,24 @@
+{
+    "best_model": "RandomForestRegressor",
+    "best_r2_score": 0.8916850274775323,
+    "models": {
+        "LinearRegression": {
+            "r2_score": 0.6687594935356322,
+            "mean_absolute_error": 3.189091965887846,
+            "mean_squared_error": 24.2911194749735,
+            "root_mean_squared_error": 4.928602182665334
+        },
+        "DecisionTreeRegressor": {
+            "r2_score": 0.6928415721345185,
+            "mean_absolute_error": 2.8059523809523816,
+            "mean_squared_error": 22.52508954495292,
+            "root_mean_squared_error": 4.746060423651697
+        },
+        "RandomForestRegressor": {
+            "r2_score": 0.8916850274775323,
+            "mean_absolute_error": 2.018274566684605,
+            "mean_squared_error": 7.943146707978983,
+            "root_mean_squared_error": 2.81835886784827
+        }
+    }
+}

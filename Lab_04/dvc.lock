@@ -1,0 +1,115 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: e83ae8bf98ed51ebcce84264720fc0a4
+      size: 3677
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: 625ed01a9b9069055d2a18219d7ead2a.dir
+      size: 37654
+      nfiles: 1
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 625ed01a9b9069055d2a18219d7ead2a.dir
+      size: 37654
+      nfiles: 1
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: 6c9749d03ba3583241e3656156fb6431
+      size: 2177
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 625ed01a9b9069055d2a18219d7ead2a.dir
+      size: 37654
+      nfiles: 1
+  feature_engineering:
+    cmd: python src/feature_engineering.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 625ed01a9b9069055d2a18219d7ead2a.dir
+      size: 37654
+      nfiles: 1
+    - path: params.yaml
+      hash: md5
+      md5: f6c73728f78eadfda75cde3c315a411e
+      size: 253
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: 317adbd278967f56191694077af2af83
+      size: 2694
+    params:
+      params.yaml:
+        feature_engineering:
+          test_size: 0.2
+          random_state: 42
+    outs:
+    - path: data/features
+      hash: md5
+      md5: 4963e8a02087a53fd383b6500fa32f22.dir
+      size: 133885
+      nfiles: 3
+  model_building:
+    cmd: python src/model_building.py
+    deps:
+    - path: data/features
+      hash: md5
+      md5: 4963e8a02087a53fd383b6500fa32f22.dir
+      size: 133885
+      nfiles: 3
+    - path: params.yaml
+      hash: md5
+      md5: f6c73728f78eadfda75cde3c315a411e
+      size: 253
+    - path: src/model_building.py
+      hash: md5
+      md5: 644d99b8e1e72bcbab9793bda0546358
+      size: 5369
+    params:
+      params.yaml:
+        model_building:
+          linear_regression:
+            fit_intercept: true
+          decision_tree:
+            max_depth: 10
+            random_state: 42
+          random_forest:
+            n_estimators: 100
+            max_depth: 15
+            random_state: 42
+    outs:
+    - path: models
+      hash: md5
+      md5: 48b6abda42843440b54a415da5c8bbb4.dir
+      size: 3396291
+      nfiles: 3
+  model_evaluation:
+    cmd: python src/model_evaluation.py
+    deps:
+    - path: data/features/test.csv
+      hash: md5
+      md5: b066dd6091ec5626cbc0f516f0678014
+      size: 26769
+    - path: models
+      hash: md5
+      md5: 48b6abda42843440b54a415da5c8bbb4.dir
+      size: 3396291
+      nfiles: 3
+    - path: src/model_evaluation.py
+      hash: md5
+      md5: c6814b0c2882fa876967712640e2845d
+      size: 6199
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 3e4cdf3225851a1dd0c374961f3a3845
+      size: 887
